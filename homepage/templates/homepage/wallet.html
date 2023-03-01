@@ -1,0 +1,95 @@
+{% extends 'homepage/base.html' %}
+
+{% block title %}
+    Infomation Your Wallet
+{% endblock %}
+
+
+{% block body %}
+    <!-- banner part here -->
+    <section class="banner_part animated_hero">
+        <div class="single_banner_part parallax_bg">
+            <div  class="container custom_container">
+                <div  class="row align-items-center justify-content-center">
+                    <div  class="col-xl-12 col-md-10">
+                        <div class="banner_iner">
+                           
+                          
+                                <div class="contact_form form_style">
+                                    <h2 class="kid_title mb-4"> Infomation New Wallet</h2>
+                                    <form>
+                              
+                                        <div class="row">
+                                            <div class="col-lg-2">
+                                                <div class="form_single_item">
+                                                    <input style="color: black;text-align: center;font-weight:bold;" type="text"  value="ADDRESS" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-10">
+                                                <div class="form_single_item">
+                                                    <input style="color: black;text-align: left !important;text-transform: none;" type="text"  value="{{new_address}}">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-lg-2">
+                                                <div class="form_single_item">
+                                                    <input style="color: black;text-align: center;font-weight:bold;" type="text"  value="PUBLICKEY" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-10">
+                                                <div class="form_single_item">
+                                                    <input style="color: black;text-align: left !important;text-transform: none;" type="text" value="{{new_pubkey}}">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-lg-2">
+                                                <div class="form_single_item">
+                                                    <input style="color: black;text-align: center;font-weight:bold;" type="text"  value="PRIVATEKEY" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-10">
+                                                <div class="form_single_item">
+                                                    <textarea style="color: black;text-align: left !important;height: 90px;text-transform: none;"  >{{new_prikey}}</textarea>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                        
+                                        <a id="download" href="#0" class="pc-button elementor-button button-link cu_btn">
+                                            <div class="button-content-wrapper">
+                                                <span class="elementor-button-text">Download</span>
+                                                <svg class="pc-dashes inner-dashed-border animated-dashes">
+                                                    <rect x="5px" y="5px" rx="25px" ry="25px" width="195.062" height="49.6"></rect>
+                                                </svg> 
+                                            </div>
+                                        </a>
+                                        <script>
+                                            var download = document.getElementById('download');
+                                            VALUE ='Keep your privatekey secret!' + '\nAddress: ' + '{{new_address}}' + '\nPublickey: ' + '{{new_pubkey}}' + '\nPrivatekey: ' + '{{new_prikey}}';
+                                            download.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(VALUE));
+                                            download.setAttribute('download', 'key.txt');
+                                        </script>
+
+                                        <a href="{% url 'homepage:profile' %}" class="pc-button elementor-button button-link cu_btn">
+                                            <div class="button-content-wrapper">
+                                                <span class="elementor-button-text">Back Profile</span>
+                                                <svg class="pc-dashes inner-dashed-border animated-dashes">
+                                                    <rect x="5px" y="5px" rx="25px" ry="25px" width="195.062" height="49.6"></rect>
+                                                </svg> 
+                                            </div>
+                                        </a>
+                                    </form>
+                                </div>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    </section>
+    <!-- banner part end -->
+
+    
+{% endblock %}

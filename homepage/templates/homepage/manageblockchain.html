@@ -1,0 +1,59 @@
+{% extends 'homepage/base.html' %}
+
+{% block body %}
+
+<section class="teacher_details_info section_padding">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="single_event_section_part">
+                    <div class="row justify-content-between">
+
+                        <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                            <div class="single_event_part event_bg_06">
+                                <div class="single_event_icon">
+                                    <img src="/media/assets/img/blockchain.png" alt="#" class="img-fluid" style="border-radius: 5px;">
+                                </div>
+                                {% if mnbc != 1 %}
+                                    <h3 style="text-decoration: none;">Run Blockchain</h3>
+                                    <a href="#" style="color: blue;">Start</a>
+                                {% else %}
+                                    <h3 style="text-decoration: none;">BC is running</h3>
+                                    <a href="#" style="color: blue;">Start</a>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                            <div class="single_event_part event_bg_04">
+                                <div class="single_event_icon">
+                                    <img src="/media/assets/img/blockchain.png" alt="#" class="img-fluid" style="border-radius: 5px;">
+                                </div>
+                                <h3 style="text-decoration: none;">Update Solution</h3>
+                                <a href="#" style="color: blue;">Start</a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                            <div class="single_event_part event_bg_05">
+                                <div class="single_event_icon">
+                                    <img src="/media/assets/img/blockchain.png" alt="#" class="img-fluid" style="border-radius: 5px;">
+                                </div>
+                                <h3 style="text-decoration: none;">Update RepuScore</h3>
+                                <a href="#" style="color: blue;">Start</a>
+                            </div>
+                        </div> -->
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+
+{% endblock %}

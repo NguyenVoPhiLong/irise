@@ -1,0 +1,172 @@
+{% extends 'homepage/base.html' %}
+
+{% block title %}
+    Test
+{% endblock %}
+
+{% block body %}
+    <div id="divwait" style="display: none; position:absolute; width: 100%;height: 250vh;z-index: 10000;background-color: rgba(255, 255, 255, 0.93);top: 0%;padding-top: 50vh;">
+        <div align="center">
+            <img src="/media/assets/img/wait.gif" style="width: 50px;height: 50px">
+            <strong>Đang nộp bài, vui lòng chờ!</strong>
+        </div>
+    </div>
+
+    <!-- banner part here -->
+    <section class="banner_part animated_hero">
+        <div style="height: auto !important " class="single_banner_part parallax_bg">
+            <div class="container custom_container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-7 col-md-10">
+                        <div class="banner_iner">
+                            <div class="contact_form form_style">
+                                <h2 class="kid_title mb-4 mt-4">Test</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- banner part end -->
+
+    <!-- contact page -->
+    <section class="contact_page section_padding">
+        <div class="container" style="max-width:80%">
+            <div class="row border rounded align-items-center">
+                <div class="col-lg-9" style="border-left: 5px solid #ff5684;">
+                    <div class="contact_form form_style">
+                        <h4 class="kid_title mt-4 mb-4" style="font-size:30px"><i class="fas fa-question-circle"></i> Question</h4>
+                        
+                        {% if questionandhint.typequestion == 'assignment' %}
+                            <p style="font-size:20px;color: black;">{{questionandhint.contentquestion | safe}}</p>
+                        {% else %}
+                            <p style="font-size:20px;color: black;">{{question | safe}}</p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <span class="badge badge-primary p-2" style="font-size:13px; background-color: red;">Level {{competence.level}} - {{competence.name}}</span>
+                        
+                        {% for skill in list_skills %}
+                            <span class="badge badge-success p-2" style="font-size:13px; background-color: #568dff;">{{skill}}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-3 border-left">
+                    <div class="contact_form form_style">
+                        <h6 class="kid_title mt-4 mb-4 text-center" >
+                            <span style="font-size: medium;">
+                                Starttime at {{solution.starttime.hour}}:{{solution.starttime.minute}}:{{solution.starttime.second}}
+                            </span>
+                        </h6>
+                        <h4 class="kid_title mt-4 mb-4 text-center" >
+                            <i class="ti-time"></i>
+                            <span id="minute">00</span>
+                            <span id="colon">:</span>
+                            <span id="second">00</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <div class="row border rounded">
+                <div class="col-lg-12" style="border-left: 5px solid #568dff;">
+                    <div class="contact_form form_style">
+                        <!-- Tự luận -->
+                        <h4 class="kid_title mt-4 mb-4" style="font-size:30px"><i class="fas fa-pencil-alt"></i> Answer</h4>
+                        
+                        <form method="post" enctype='multipart/form-data'>
+                            {% csrf_token %}
+                            <div class="row">
+                                
+                                {% if questionandhint.typequestion == 'assignment' %}
+                                <!-- Tự luận -->
+                                <div class="col-lg-12">
+                                    <div class="form_single_item">
+                                        <textarea class="ckeditor" cols="80" name="answer" rows="5" ></textarea>
+                                    </div>
+                                </div>
+                                {% else %}
+                                    <!-- Trắc nghiệm -->
+                                    {% for answer in answers %}
+                                        <div class="col-lg-12 mt-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="answer" value="{{answer | safe}}">
+                                                <label class="form-check-label" for="{{answer}}">
+                                                    {{answer | safe}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <br>
+                                <br>
+                                <div class="col-lg-3">
+                                    <div class="form_single_item">
+                                        <h4 class="kid_title mt-4 mb-4" style="font-size:30px"><i class="fas fa-key"></i> Private Key</h4>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-9">
+                                    <div class="form_single_item">                     
+                                        <textarea id="privatekey" name="privatekey" style="background-color: #eceef1;color: black;text-align: left !important;height: 90px;text-transform: none;" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if message  %}
+                                <h3 style="color: red;text-align: center;"  class="kid_title mb-4"> {{message}}</h3>
+                            {% endif %}
+                            <div align="center">
+                                <button id="wait" type="submit" class="pc-button elementor-button button-link cu_btn mb-4">
+                                    <div class="button-content-wrapper">
+                                        <span class="elementor-button-text">Submit</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $('#wait').click(function(){
+            var privatekey =  $('#privatekey').val()
+            if (privatekey != '') {
+                $('#divwait').show()
+            }
+        })
+    </script>
+    <!-- contact page end -->
+
+    <script type="text/javascript">
+        var minutesLabel = document.getElementById("minute");
+        var secondsLabel = document.getElementById("second");
+        var totalSeconds = 0;
+        setInterval(setTime, 1000);
+
+        function setTime()
+        {
+            ++totalSeconds;
+            secondsLabel.innerHTML = pad(totalSeconds%60);
+            minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+        }
+
+        function pad(val)
+        {
+            var valString = val + "";
+            if(valString.length < 2)
+            {
+                return "0" + valString;
+            }
+            else
+            {
+                return valString;
+            }
+        }
+    </script>
+
+{% endblock %}

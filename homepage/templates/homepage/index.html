@@ -1,0 +1,173 @@
+{% extends 'homepage/base.html' %}
+
+{% block body %}
+
+<div id="popup" style="display: none; position: fixed;width: 100%;text-align: center;background-color: rgba(255, 255, 255, 0.9);height: 700pt;z-index: 5000">
+    <div>
+        <div align="center" id="formpop" class="container" style="background:#f5f5f0;padding: 20px;border: 2px solid black;border-radius: 10px;margin-top: 100px">
+            <div class="row" style="padding-top: 50px;">     
+                
+                <div class="col-12 col-lg-12" style="text-align: center;margin-bottom: 40px;">
+                            <div class="contact_form form_style">
+                                <h2 class="kid_title mb-4"> You Want To Choose Test For </h2>
+                                <form>
+                                
+                                        <a  href="{% url 'homepage:test' typeskill='pro' %}" style="margin-top: 20px;margin-right: 20px;" class="pc-button elementor-button button-link cu_btn" >
+                                            <div class="button-content-wrapper">
+                                                <span class="elementor-button-text">Technical Skills</span>
+                                                <svg class="pc-dashes inner-dashed-border animated-dashes">
+                                                    <rect x="5px" y="5px" rx="25px" ry="25px" width="195.062" height="49.6"></rect>
+                                                </svg> 
+                                            </div>
+                                        </a>
+
+                                        <a  href="{% url 'homepage:test' typeskill='pot' %}" style="margin-top: 20px;margin-right: 20px;background-color:cornflowerblue;" class="pc-button elementor-button button-link cu_btn" >
+                                            <div class="button-content-wrapper">
+                                                <span class="elementor-button-text">Potential Skills</span>
+                                                <svg class="pc-dashes inner-dashed-border animated-dashes">
+                                                    <rect x="5px" y="5px" rx="25px" ry="25px" width="195.062" height="49.6"></rect>
+                                                </svg> 
+                                            </div>
+                                        </a>
+                                    
+                                    
+
+                                     <a  href="#" onclick="togglePop()" style="margin-top: 20px;background-color: #5d4a4f" class="pc-button elementor-button button-link cu_btn" >
+                                        <div class="button-content-wrapper">
+                                            <span class="elementor-button-text">Cancel</span>
+                                            <svg class="pc-dashes inner-dashed-border animated-dashes">
+                                                <rect x="5px" y="5px" rx="25px" ry="25px" width="195.062" height="49.6"></rect>
+                                            </svg> 
+                                        </div>
+                                    </a>
+                                  
+
+                                </form>
+                            </div>
+                </div>              
+                
+            </div>
+
+
+        </div>
+        
+    </div>
+    
+</div>
+
+
+<!-- services part here -->
+<section style="padding-top: 15px !important; padding-bottom: 50px;" class="services_part wave_shape_bg sec_padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="section_tittle_style_02">
+                    <h2 class="title wow fadeInDown" data-wow-delay=".3s" > <span class="title_overlay_effect"> </span></h2>
+                    <p class="description wow fadeInDown" data-wow-delay=".3s"><b>Hệ thống IRISE cho phép 
+                        mọi người tham gia xây dựng và tích lũy uy tín cá nhân trong nghề công nghệ phần mềm.</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-lg-6 wow fadeInDown zoom" data-wow-delay=".4s">
+                {% if is_sol %}
+                    <a class="single_service_part d-block bg_color_2" href="{% url 'homepage:test' typeskill='pro' %}">
+                        <div class="service_section_img_wrapper">
+                            <h5 style="color:white ;">Open to everyone participating in the system</h5><br>
+                            <img src="/media/assets/img/test.png" alt="#" style="height: 200px; width: 300px;" class="img-fluid">
+                        </div>
+                        <h5 class="service_title">Take a Test</h5>
+                    </a>
+                {% else %}
+                    <a class="single_service_part d-block bg_color_2" href="#" onclick="togglePop()">
+                        <div class="service_section_img_wrapper">
+                            <h5 style="color:white ;">Open to everyone participating in the system</h5><br>
+                            <img src="/media/assets/img/test.png" alt="#" style="height: 200px; width: 300px;" class="img-fluid">
+                        </div>
+                        <h5 class="service_title">Take a Test</h5>
+                    </a>
+                {% endif %}
+            </div>
+            <div class="col-sm-6 col-lg-6 wow fadeInDown zoom" data-wow-delay=".2s">
+                <a class="single_service_part d-block" href="{% url 'homepage:evaluatetest' %}">
+                    <div class="service_section_img_wrapper">
+                        <h5 style="color:white ;">For individuals with high professional reputation</h5> <br>
+                        <img src="/media/assets/img/assignment.png" alt="#" style="height: 200px;width: 200px;"class="img-fluid">
+                    </div>
+                    <h5 class="service_title">Evaluate Test</h5>
+                </a>
+            </div>
+            
+        </div>
+      
+    </div>
+    
+</section>
+<!-- services part end -->
+
+<!-- fetures part here -->
+<section class="fetures_part padding_bottom">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="section_tittle_style_02">
+                    <h2 class="title wow fadeInDown" data-wow-delay=".3s"> <span class="title_overlay_effect"> 5 Level of Competency</span></h2>
+                    <p class="description wow fadeInDown" data-wow-delay=".3s">Hệ thống cho phép phân loại và đánh giá các kĩ sư phần mềm theo 
+                        các mức độ năng lực của thang đo công nghệ phần mềm từ Level 1 đến Level 5.</p>
+                </div>
+            </div>
+        </div>
+        <div style="max-width: 100%;" class="row justify-content-between">
+            <div class="row justify-content-between">
+                <div class="col-lg-2 col-sm-6 wow fadeInUp" data-wow-delay=".2s">
+                    <div style="height: 250px;" class="single_fetures_part">
+                        
+                        <h4> <a href="#"> Level <h1 style="color: white;font-weight: bold;">1</h1></a></h4>
+                        <p>Technician</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
+                    <div style="height: 250px;" class="single_fetures_part lightblue_bg">
+                        
+                        <h4> <a href="#"> Level <h1 style="color: white;font-weight: bold;">2</h1></a> </h4>
+                        <p>Entry Level Practitioner</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-sm-6 wow fadeInUp" data-wow-delay=".8s">
+                    <div style="background-color: #fd5c37;height: 250px;" class="single_fetures_part">
+                        
+                        <h4> <a href="#"> Level <h1 style="color: white;font-weight: bold;">3</h1></a> </h4>
+                        <p>Practitioner</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-sm-6 wow fadeInUp" data-wow-delay=".8s">
+                    <div style="background-color:#ff8000; height: 250px;" class="single_fetures_part">
+                        
+                        <h4> <a href="#"> Level <h1 style="color: white;font-weight: bold;">4</h1></a> </h4>
+                        <p >Technician Leader</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-sm-6 wow fadeInUp" data-wow-delay=".8s">
+                    <div style="height: 250px;" class="single_fetures_part pink_bg">
+                        
+                        <h4> <a href="#"> Level <h1 style="color: white;font-weight: bold;">5</h1></a> </h4>
+                        <p>Senior Software Engineering</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</section>
+<!-- fetures part end -->
+<script type="text/javascript">
+                                        
+    function togglePop()
+    {
+         $("#popup").animate({width:'toggle'}, 500);
+    }
+ 
+</script>
+
+
+{% endblock %}

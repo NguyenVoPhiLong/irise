@@ -1,0 +1,86 @@
+{% extends 'homepage/base.html' %}
+
+{% block title %}
+    Sign Up
+{% endblock %}
+
+
+{% block body %}
+    <!-- banner part here -->
+    <section class="banner_part animated_hero">
+        <div style="height: auto !important " class="single_banner_part parallax_bg">
+            <div class="container custom_container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-7 col-md-10">
+                        <div class="banner_iner">
+                           
+                           <!--  -->
+                                <div class="contact_form form_style">
+                                    <h2 class="kid_title mb-4"> Sign Up</h2>
+                                    {% if message  %}
+                                        <h3 style="color: white;" class="kid_title mb-4"> {{message}}</h3>
+                                    {% endif %}
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            
+                                            <div class="col-lg-9">
+                                                <div class="form_single_item">
+                                                    <input style="color: black;text-align: center;text-transform: none;" type="text" name="lastname" placeholder="Last Name" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="form_single_item">
+                                                    <input style="color: black;text-align: center;text-transform: none" type="text" name="firstname" placeholder="First Name" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <div class="form_single_item">
+                                                    <input style="color: black;text-align: center;text-transform: none" type="text" name="email" placeholder="Email" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <div class="form_single_item">
+                                                    <input style="color: black;text-align: center;text-transform: none;" type="text" name="username" placeholder="Username" required>
+                                                </div>
+                                            </div>
+                                            
+
+                                            <div class="col-lg-12">
+                                                <div class="form_single_item">
+                                                    <input style="color: black;text-align: center;text-transform: none;" type="password" name="password1" placeholder="Password" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <div class="form_single_item">
+                                                    <input style="color: black;text-align: center;text-transform: none;" type="password" name="password2" placeholder="Confirm Password" required>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                        <button type="submit" class="pc-button elementor-button button-link cu_btn">
+                                            <div class="button-content-wrapper">
+                                                <span class="elementor-button-text">Sign Up</span>
+                                                <svg class="pc-dashes inner-dashed-border animated-dashes">
+                                                    <rect x="5px" y="5px" rx="25px" ry="25px" width="195.062" height="49.6"></rect>
+                                                </svg> 
+                                            </div>
+                                        </button>
+                                    </form>
+                                </div>
+                           <!--  -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    </section>
+    <!-- banner part end -->
+
+    
+{% endblock %}

@@ -1,0 +1,91 @@
+
+{% extends 'homepage/base.html' %}
+
+{% block title %}
+    Edit Profile
+{% endblock %}
+
+
+{% block body %}
+
+
+<section class="banner_part animated_hero">
+    <div style="height: auto !important " class="single_banner_part parallax_bg">
+        <div class="container custom_container">
+            <div class="row align-items-center justify-content-center">
+                <div  class="col-xl-12 col-md-10">
+                    <div  class="banner_iner">
+                       
+                       <!--  -->
+                            <div class="contact_form form_style">
+                                
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form_single_item">
+                                                <label style="color: white; font-weight: bold; font-size: 15pt;"> Descrise Your Education</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form_single_item">
+                                                <textarea class="ckeditor" cols="80"  name="education" rows="5" required>{{account.education | safe}}</textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-lg-12">
+                                            <div class="form_single_item">
+                                                <label style="color: white; font-weight: bold; font-size: 15pt;"> Descrise Your Skill</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form_single_item">
+                                                <textarea class="ckeditor" cols="80"  name="skill" rows="5" required>{{account.skill | safe}}</textarea>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col-lg-12">
+                                            <div class="form_single_item">
+                                                <label style="color: white; font-weight: bold; font-size: 15pt;"> Descrise Your Work Experience</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form_single_item">
+                                                <textarea class="ckeditor" cols="80"  name="workexperience" rows="5"  required>{{account.workexperience | safe}}</textarea>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col-lg-12">
+                                            <div class="form_single_item">
+                                                <label style="color: white; font-weight: bold; font-size: 15pt;"> Descrise Your Project</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form_single_item">
+                                                <textarea class="ckeditor" cols="80"  name="project" rows="5"  required>{{account.project | safe}}</textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    <button type="submit" class="pc-button elementor-button button-link cu_btn">
+                                        <div class="button-content-wrapper">
+                                            <span class="elementor-button-text">Confirm</span>
+                                            <svg class="pc-dashes inner-dashed-border animated-dashes">
+                                                <rect x="5px" y="5px" rx="25px" ry="25px" width="195.062" height="49.6"></rect>
+                                            </svg> 
+                                        </div>
+                                    </button>
+                                </form>
+                            </div>
+                       <!--  -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+</section>
+
+
+{% endblock %}

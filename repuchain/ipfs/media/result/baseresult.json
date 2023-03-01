@@ -1,0 +1,11 @@
+{
+    "hash_solution": ["QmNY5fHMdENrcSB9XNXq53fNkUnqTp5zHMtj9cp8Qk9pPB", "2wJAhNzhJjBB7o5pnHEu3gbr8hNWS3SvCyBq36Pw12iSujtNmEuX867YQL6TWHnD6D9CHHiSiexX2pQ94"],
+    "hash_rates": {
+        "2wJAhNzhJjBB7o5pnHEu3gbr8hNWS3SvCyBq36Pw12iSujtNmEuX867YQL6TWHnD6D9CHHiSiexX2pQ94": "hash_rate",    
+        "2wJAhNzhJjBB7o5pnHEu3gbr8hNWS3SvCyBq3NKeXbFMf7ztRRtxPvu9A8AaC5hTtwpov1JqPKKqnsWSt": "hash_rate" 
+    },
+    "score_solution": 98,
+    "score_rates": 12,
+    "type_solution": "pro",
+    "black_rates": []
+}

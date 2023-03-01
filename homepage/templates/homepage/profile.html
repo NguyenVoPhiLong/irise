@@ -1,0 +1,377 @@
+{% extends 'homepage/base.html' %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+
+{% block body %}
+                                    
+
+<div id="popup" style="display: none; position: fixed;width: 100%;text-align: center;background-color: rgba(255, 255, 255, 0.9);height: 700pt;z-index: 5000">
+    <div>
+        <div align="center" id="formpop" class="container" style="background:#f5f5f0;padding: 20px;border: 2px solid black;border-radius: 10px;margin-top: 100px">
+            <div class="row" style="padding-top: 50px;">     
+                
+                <div class="col-12 col-lg-12" style="text-align: center;margin-bottom: 40px;">
+                            <div class="contact_form form_style">
+                                <h2 class="kid_title mb-4"> Confirm Your Password To Create Wallet</h2>
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="row">
+
+
+                                        <div class="col-lg-12">
+                                            <div class="form_single_item">
+                                                <input style="color: black;text-align: center;width: 50%" type="password" name="password" placeholder="Password" required>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    <button type="submit" style="margin-top: 20px" class="pc-button elementor-button button-link cu_btn">
+                                        <div class="button-content-wrapper">
+                                            <span class="elementor-button-text">Confirm</span>
+                                            <svg class="pc-dashes inner-dashed-border animated-dashes">
+                                                <rect x="5px" y="5px" rx="25px" ry="25px" width="195.062" height="49.6"></rect>
+                                            </svg> 
+                                        </div>
+                                    </button>
+
+                                     <a  href="#" onclick="togglePop()" style="margin-top: 20px;background-color: #5d4a4f" class="pc-button elementor-button button-link cu_btn" >
+                                        <div class="button-content-wrapper">
+                                            <span class="elementor-button-text">Cancel</span>
+                                            <svg class="pc-dashes inner-dashed-border animated-dashes">
+                                                <rect x="5px" y="5px" rx="25px" ry="25px" width="195.062" height="49.6"></rect>
+                                            </svg> 
+                                        </div>
+                                    </a>
+                                  
+
+                                </form>
+                            </div>
+                </div>              
+                
+            </div>
+
+
+        </div>
+        
+    </div>
+    
+</div>
+
+<div id="popup2" style="display: none; position: fixed;width: 100%;text-align: center;background-color: rgba(255, 255, 255, 0.9);height: 700pt;z-index: 5000">
+    <div>
+        <div align="center" id="formpop" class="container" style="background:#f5f5f0;padding: 20px;border: 2px solid black;border-radius: 10px;margin-top: 100px">
+            <div class="row" style="padding-top: 50px;">     
+                
+                <div class="col-12 col-lg-12" style="text-align: center;margin-bottom: 40px;">
+                            <div class="contact_form form_style">
+                                <h2 class="kid_title mb-4"> Confirm Your Password and Privatekey To Login This Page</h2>
+                                <form method="post" action="{% url 'homepage:checkmanage_blockchain' %}">
+                                    {% csrf_token %}
+                                    <div class="row">
+
+                                        <div class="col-lg-3">
+                                            <div class="form_single_item">
+                                                <h4 class="kid_title mt-4 mb-4" style="font-size:30px"><i class="fas fa-key"></i> Password</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <div class="form_single_item">
+                                                <input style="color: black;text-align: center;background-color: #eceef1" type="password" name="password" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="form_single_item">
+                                                <h4 class="kid_title mt-4 mb-4" style="font-size:30px"><i class="fas fa-key"></i> Private Key</h4>
+                                            </div>
+                                        </div>
+        
+                                        <div class="col-lg-9">
+                                            <div class="form_single_item">                     
+                                                <textarea name="privatekey" style="background-color: #eceef1;color: black;text-align: left !important;height: 90px;" required></textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    <button type="submit" style="margin-top: 20px" class="pc-button elementor-button button-link cu_btn">
+                                        <div class="button-content-wrapper">
+                                            <span class="elementor-button-text">Confirm</span>
+                                            <svg class="pc-dashes inner-dashed-border animated-dashes">
+                                                <rect x="5px" y="5px" rx="25px" ry="25px" width="195.062" height="49.6"></rect>
+                                            </svg> 
+                                        </div>
+                                    </button>
+
+                                     <a  href="#" onclick="togglePop2()" style="margin-top: 20px;background-color: #5d4a4f" class="pc-button elementor-button button-link cu_btn" >
+                                        <div class="button-content-wrapper">
+                                            <span class="elementor-button-text">Cancel</span>
+                                            <svg class="pc-dashes inner-dashed-border animated-dashes">
+                                                <rect x="5px" y="5px" rx="25px" ry="25px" width="195.062" height="49.6"></rect>
+                                            </svg> 
+                                        </div>
+                                    </a>
+                                  
+
+                                </form>
+                            </div>
+                </div>              
+                
+            </div>
+
+
+        </div>
+        
+    </div>
+    
+</div>
+
+    <!-- breadcrumb part -->
+    <section class="breadcrumb_part parallax_bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 ">
+                    <div class="breadcrumb_iner">
+                        <h2>My Profile</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb part end -->
+
+
+    <!-- teacher details part here -->
+    <section class="teacher_details_info section_padding">
+        
+        <div class="container">
+
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-5 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="profile_img pr-lg-3">
+                        <img src="media/assets/img/teacher_profile_img.png" alt="#" style="width: 200px;height: 200px;" class="img-fluid">
+
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-7 wow fadeInUp" data-wow-delay=".5s">
+                    
+                    <div class="profile_content mt-5 mt-lg-0">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <a href="{% url 'homepage:editprofile' account.accountid %}" style="background-color: #fd5c37; width: 200px;" class="teacher_category">Edit Profile</a>
+                            </div>
+                            {% if account.addresswallet == None  %}
+                            <div class="col-lg-4">
+                                <a href="#" onclick="togglePop()" style="width: 200px;"class="teacher_category">Add Wallet</a>
+                            </div>
+                            {% else %}
+                            <div class="col-lg-4">
+                                <a href="#0" style="width: 200px;background-color: gray;"class="teacher_category">Add Wallet</a>
+                            </div>
+                            {% endif %}
+                            
+                            {% if is_mnbc == 0 %}
+                            <div class="col-lg-4">
+                                <a href = "#"  style="background-color: #4CA9FF; width: 200px;" class="teacher_category">Manage BC</a>
+                            </div>
+                            {% else %}
+                            <div class="col-lg-4">
+                                <a href = "#"  style="background-color: #4CA9FF; width: 200px;" class="teacher_category">Manage BC</a>
+                            </div>
+                            {% endif %}
+
+                            <div style="text-align: center;" class="col-lg-6">
+                                {% if message  %}
+                                    <h5 style="color: red; font-size: 14pt;"  class="kid_title mb-4"> {{message}}</h5>
+                                {% endif %}
+                            </div>
+                                    
+                        </div>
+                        <h2 style="padding-top: 20px;" class="mb-0 kid_title"> <span class="title_overlay_effect">{{account.userid.last_name}} {{account.userid.first_name}}</span></h2>
+                        
+                        <ul class="teacher_profile_info">
+                            <li> <span>Competence Level:</span> Lv{{account.competencelevel}} - {{competence.name}}</li>
+                            <li> <span>Reputation Score:</span> {{account.reputationscore}}</li>
+                            <li> <span>Wallet Address: </span> 
+                                {% for addresswallet in addresswallets %}
+                                    <small style="font-size: 12pt;color: black;">{{addresswallet}}</small> <br>  
+                                {% endfor %}
+                            </li>
+                            <li> <span>Publickey: <br></span> 
+                                {% for pubkey in pubkeys %}
+                                    <small style="font-size: 9pt;color: black;">{{pubkey}}</small> <br>  
+                                {% endfor %}
+                            </li>
+                        </ul>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row mt_100">
+                <div class="col-lg-12">
+                    <h2 class="tittle wow fadeInUp kid_title mb-5" data-wow-delay=".3s"> 
+                        <span class="title_overlay_effect">Education</span>
+                    </h2>
+                    {{account.education | safe}}
+                </div>
+            </div>
+            <div class="row mt_100">
+                <div class="col-lg-12">
+                    <h2 class="tittle wow fadeInUp kid_title mb-5" data-wow-delay=".3s"> 
+                        <span class="title_overlay_effect">Skill</span>
+                    </h2>
+                    {{account.skill | safe}}
+                </div>
+            </div>
+            <div class="row mt_100">
+                <div class="col-lg-12">
+                    <h2 class="tittle wow fadeInUp kid_title mb-5" data-wow-delay=".3s"> 
+                        <span class="title_overlay_effect">Work Experience</span>
+                    </h2>
+                    {{account.workexperience | safe}}
+                </div>
+            </div>
+            <div class="row mt_100">
+                <div class="col-lg-12">
+                    <h2 class="tittle wow fadeInUp kid_title mb-5" data-wow-delay=".3s"> 
+                        <span class="title_overlay_effect">Project</span>
+                    </h2>
+                    {{account.project | safe}}
+                </div>
+            </div>
+
+            <div class="row mt_100">
+                <div class="col-lg-6">
+                    <h2 class="tittle wow fadeInUp kid_title mb-5" data-wow-delay=".3s"> 
+                        <span class="title_overlay_effect">Biểu đồ 9-box</span>
+                    </h2>
+                    <div align="center" >
+                        <canvas id="myCanvas" width="400px" height="400px" style="position: relative;z-index: 1;"></canvas>
+                
+                        <script>
+                        
+
+                        var canvas = document.getElementById("myCanvas"),
+                            ctx = canvas.getContext("2d");
+                
+                        canvas.width = 600;
+                        canvas.height = 600;
+                
+                
+                        function drawPoint(context, x, y, label, color, size) {
+                                if (color == null) {
+                                    color = '#000';
+                                }
+                                if (size == null) {
+                                    size = 5;
+                                }
+                                
+                                var radius = 0.5 * size;
+                
+                                // to increase smoothing for numbers with decimal part
+                            var pointX = Math.round(x - radius);
+                                var pointY = Math.round(y - radius);
+                            
+                                context.beginPath();
+                                context.fillStyle = color;
+                                context.fillRect(pointX, pointY, size, size);
+                                context.fill();
+                                
+                                if (label) {
+                                    var textX = Math.round(x);
+                                    var textY = Math.round(pointY - 5);
+                                    
+                                    context.font = 'Italic 18px Arial';
+                                    context.fillStyle = color;
+                                    context.textAlign = 'center';
+                                    context.fillText(label, textX, textY);
+                                }
+                            }
+                
+                        var background = new Image();
+                        background.src = "media/assets/img/9box.png";
+                
+                        // Make sure the image is loaded first otherwise nothing will draw.
+                
+                        background.onload = function(){
+                            ctx.imageSmoothingEnabled = false;       
+                            ctx.drawImage(background, 0, 0, canvas.width, canvas.height); 
+                            
+                        }
+                        $(document).ready(function() {
+
+                            setTimeout(function(){
+                                myPointX = {{pro_avgscore}};
+                                myPointY = {{pot_avgscore}};
+                                
+                                str_XY = 'You (per = ' + String(myPointX) + ', pot =' + String(myPointY) + ')'
+                                
+                                Ox1 = 93
+                                Oxmax = 502
+                        
+                                Oy1 = 505
+                                Oymax = 97
+                        
+                                disvisionX = (Oxmax - Ox1)/100
+                                disvisionY = (Oy1 - Oymax)/100
+                                drawPoint(ctx, Ox1 + (myPointX*disvisionX) , Oy1 - (myPointY*disvisionY), str_XY, '#2e2eb8', 9);
+                            }, 200)
+
+                           
+                        });
+                        
+                        
+                        </script>
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-5">
+                    <h2 class="tittle wow fadeInUp kid_title mb-5" data-wow-delay=".3s"> 
+                        Diễn giải
+                    </h2>
+                    <p style="font-size: 15pt;font-weight: bold; color: black">
+                        &#128073;&#127995; <strong style="color: rgb(217, 0, 255);">Your Position: </strong><br>
+                        {{position}} <br><br>
+                        &#127919; <strong style="color: rgb(0, 195, 255);">Advices: </strong><br>
+                        
+                        {{pro_advice}} <small>(Technical skills correspond to work performance) </small><br>
+                        {{pot_advice}} <br>
+                    </p>
+                </div>
+            </div>
+            
+            
+          
+        </div>
+    
+    </section>
+    <!-- teacher details part end -->
+
+    <script type="text/javascript">
+                                            
+        // $(document).ready(function()
+        // {
+        //     $("#popup").animate({width:'toggle'}, 1000);
+        // })
+
+        function togglePop()
+        {
+             $("#popup").animate({width:'toggle'}, 500);
+        }
+        function togglePop2()
+        {
+             $("#popup2").animate({width:'toggle'}, 500);
+        }
+    </script>
+
+    
+
+
+{% endblock %}
+
+
+

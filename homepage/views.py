@@ -334,6 +334,8 @@ def editprofile(request, id):
             skill = request.POST.get('skill')
             project = request.POST.get('project')
 
+            print(education)
+
             account.workexperience = workexperience 
             account.education = education 
             account.skill = skill
@@ -570,13 +572,20 @@ def evaluatetest(request):
         # Nếu của người tạo thì không show
         solutions = list(solutions)
         rates = RateSolution.objects.filter(accountid = account)
+        solutions_sub = []
         for rate in rates:
             for solution in solutions:
                 if rate.solutionid.solutionid == solution.solutionid:
-                    solutions.remove(solution)
+                    solutions_sub.append(solution)
+    
         for solution in solutions:
             if account.accountid == solution.accountid.accountid:
-                solutions.remove(solution)
+                solutions_sub.append(solution)
+        
+        res = list(set(solutions)^set(solutions_sub))
+        solutions = res
+        print(solutions)
+
 
         showsolutions = []
         order = 1
@@ -594,8 +603,11 @@ def evaluatetest(request):
 
             # list evaluaters
             evaluaters = RateSolution.objects.filter(solutionid = solution)
+
+            # config numbers rate
             accounts = Account.objects.all()
-            max_evaluaters = int(len(accounts)*settings.percentnodes) + 1
+            max_evaluaters = int(len(accounts)*settings.percentnodes*settings.percentnodes) + 1
+            # endconfig
 
             cls_sol = ShowSolution(order, solution, list_skills, len(evaluaters), max_evaluaters, 0)
             order += 1
@@ -734,8 +746,12 @@ def refresh_solutions():
     # get solutions with status checking
     solutions = Solution.objects.filter(status = 'checking')
     # get rates of solution
+
+    # config number rates
     accounts = Account.objects.all()
-    max_evaluaters = int(len(accounts)*settings.percentnodes) + 1
+    max_evaluaters = int(len(accounts)*settings.percentnodes*settings.percentnodes) + 1
+    # endconfig
+
     for solution in solutions:
         rates = RateSolution.objects.filter(solutionid = solution)
         
@@ -837,7 +853,7 @@ def refresh_reputationscore():
     
     for user in users:
         account = Account.objects.get(publickey = user['pubkey'])
-        account.reputationscore = user['score']
+        account.reputationscore = int(float(user['score']))
         if account.reputationscore >= settings.score_lv1:
             account.reputationscore = 2
         # continue level 3 4 5

@@ -1,3 +1,4 @@
 - Config Knownodes
 - Config Wallet
 - Config settings: leaders
+- Lib: version ipfsclienthttp
